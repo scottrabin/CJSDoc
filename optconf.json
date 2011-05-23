@@ -1,0 +1,6 @@
+[
+	{ "shortname": "d", "longname": "destination", "value": true, "description": "The output destination of the documentation files" },
+	{ "shortname": "h", "longname": "help", "value": true, "description": "Show this help entry" },
+	{ "shortname": "t", "longname": "template", "value": true, "description": "The template to use for formatting the documentation" },
+	{ "shortname": "T", "longname": "test", "value": false, "description": "Run the test battery on Jsdoc3" }
+]
