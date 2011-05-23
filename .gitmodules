@@ -1,6 +1,6 @@
 [submodule "node_modules/prettyprint"]
 	path = node_modules/prettyprint
-	url = http://github.com/scottrabin/prettyprint.git
+	url = https://github.com/scottrabin/prettyprint.git
 [submodule "node_modules/narcissus"]
 	path = node_modules/narcissus
-	url = https://github.com/mozilla/narcissus
+	url = https://github.com/mozilla/narcissus.git
