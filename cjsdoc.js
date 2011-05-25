@@ -14,12 +14,11 @@ try {
 }
 
 // help requested or no arguments passed, print help file
-/*
- if( opts.help || process.argv.length === 2 ){
- console.log( optParser.printHelp() );
- process.exit( 0 );
- }
- */
+
+if( opts.help || process.argv.length === 2 ){
+    console.log( optParser.printHelp() );
+    process.exit( 0 );
+}
 
 // require needed modules
 var fs = require( 'fs' ),
@@ -27,14 +26,7 @@ Narcissus = require( 'narcissus' ),
 pp = require( 'prettyprint' ).prettyprint,
 path = require( 'path' );
 
-if( opts.ast > 0 ){
-    for( var i = 0, l = opts.target.length ; i < l ; ++i ){
-	var parsed = Narcissus.parser.parse( fs.readFileSync( opts.target[i]), path.basename( opts.target[i] ) );
-	console.log( pp( parsed, opts.ast ) );
-    }
-    process.exit( 0 );
-}
-// run the test battery?
+// run the test battery
 if( opts.test ){
     var sandbox = {
 	"Narcissus": Narcissus,
@@ -47,6 +39,7 @@ if( opts.test ){
     process.exit( 0 );
 }
 
+// run the parser against each target
 for( var i = 0, l = opts.target.length ; i < l ; ++i ){
     var tree = require( 'cjsdoc' ).parse( fs.readFileSync( opts.target[i] ), path.basename( opts.target[i] ) );
     console.log( pp(tree,20,['node']) );
