@@ -1,6 +1,8 @@
 [
+	{ "shortname": "a", "longname": "ast", "value": true, "description": "Dumps the AST returned by Narcissus to the console, truncated to the specified depth." },
 	{ "shortname": "d", "longname": "destination", "value": true, "description": "The output destination of the documentation files" },
-	{ "shortname": "h", "longname": "help", "value": true, "description": "Show this help entry" },
+	{ "shortname": "h", "longname": "help", "value": false, "description": "Show this help entry" },
+	{ "shortname": null, "longname": "no-translate", "value": false, "description": "Prints the culled AST to the console, without transforming into a traversible documentation tree." },
 	{ "shortname": "t", "longname": "template", "value": true, "description": "The template to use for formatting the documentation" },
 	{ "shortname": "T", "longname": "test", "value": false, "description": "Run the test battery on Jsdoc3" }
 ]
