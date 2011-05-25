@@ -1,4 +1,5 @@
 [
+	{ "shortname": "a", "longname": "ast", "value": true, "description": "Dumps the AST from Narcissus to the specified depth." },
 	{ "shortname": "d", "longname": "destination", "value": true, "description": "The output destination of the documentation files" },
 	{ "shortname": "h", "longname": "help", "value": true, "description": "Show this help entry" },
 	{ "shortname": "t", "longname": "template", "value": true, "description": "The template to use for formatting the documentation" },
