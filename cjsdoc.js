@@ -22,25 +22,37 @@ if( opts.help || process.argv.length === 2 ){
 
 // require needed modules
 var fs = require( 'fs' ),
-Narcissus = require( 'narcissus' ),
+cjsdoc = require( 'cjsdoc' ),
 pp = require( 'prettyprint' ).prettyprint,
 path = require( 'path' );
 
 // run the test battery
 if( opts.test ){
-    var sandbox = {
-	"Narcissus": Narcissus,
-	"tests": {}
-    };
-
-    var unitnode = require( 'unitnode' ), results = unitnode.runTests();
-    unitnode.displayTestResults( results );
-    
+    var run = require( './tests/run' );
+    process.exit( 0 );
+} else if( opts.ast > 0 ){
+    var narc = require( 'narcissus' );
+    console.log( pp( narc.parser.parse( fs.readFileSync( opts.target[0] ) ), opts.ast, 0, ['tokenizer'] ) );
     process.exit( 0 );
 }
 
 // run the parser against each target
+var master = [], tree;
 for( var i = 0, l = opts.target.length ; i < l ; ++i ){
-    var tree = require( 'cjsdoc' ).parse( fs.readFileSync( opts.target[i] ), path.basename( opts.target[i] ) );
-    console.log( pp(tree,20,['node']) );
+    tree = cjsdoc.parse(
+	fs.readFileSync( opts.target[i] ),
+	path.basename( opts.target[i] ),
+	master
+    );
+
+    master.push( tree );
+
+}
+
+if( opts['no-translate'] ){
+    console.log( pp( master, 20, 0, ['parent'] ) );
+} else {
+    master = cjsdoc.translate( master );
+
+    console.log( pp( master, 20, 0, ['parent'] ) );
 }
