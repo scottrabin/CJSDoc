@@ -42,17 +42,10 @@ for( var i = 0, l = opts.target.length ; i < l ; ++i ){
     tree = cjsdoc.parse(
 	fs.readFileSync( opts.target[i] ),
 	path.basename( opts.target[i] ),
-	master
+	opts['no-transform']
     );
 
     master.push( tree );
-
 }
 
-if( opts['no-translate'] ){
-    console.log( pp( master, 20, 0, ['parent'] ) );
-} else {
-    master = cjsdoc.translate( master );
-
-    console.log( pp( master, 20, 0, ['parent'] ) );
-}
+console.log( pp( master, 20, 0, ['parent'] ) );
